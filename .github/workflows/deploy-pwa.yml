@@ -1,0 +1,99 @@
+name: Deploy PWA
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      source_ref:
+        description: Branch or tag from oneworks-ai/app to build.
+        required: false
+        default: main
+        type: string
+      source_sha:
+        description: Exact oneworks-ai/app commit SHA to build. Overrides source_ref.
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pwa-pages
+  cancel-in-progress: true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Resolve source ref
+        id: source
+        run: |
+          source_ref="${{ github.event.inputs.source_ref || 'main' }}"
+          source_sha="${{ github.event.inputs.source_sha || '' }}"
+          if [ -n "$source_sha" ]; then
+            echo "ref=$source_sha" >> "$GITHUB_OUTPUT"
+          else
+            echo "ref=$source_ref" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout app source
+        uses: actions/checkout@v4
+        with:
+          repository: oneworks-ai/app
+          ref: ${{ steps.source.outputs.ref }}
+          fetch-depth: 1
+          path: app
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.28.0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: app/.node-version
+          cache: pnpm
+          cache-dependency-path: app/pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm -C app install --frozen-lockfile
+
+      - name: Build PWA
+        run: pnpm -C app/apps/client exec vite build
+        env:
+          __ONEWORKS_PROJECT_CLIENT_BASE__: /pwa/
+          __ONEWORKS_PROJECT_CLIENT_HOMEPAGE_PREVIEW__: "1"
+          __ONEWORKS_PROJECT_CLIENT_MODE__: standalone
+
+      - name: Checkout pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: pages
+
+      - name: Publish gh-pages branch
+        env:
+          SOURCE_REF: ${{ steps.source.outputs.ref }}
+        run: |
+          rsync -a --delete --exclude .git app/apps/client/dist/ pages/
+          cp pages/index.html pages/404.html
+          touch pages/.nojekyll
+
+          git -C pages config user.name "oneworks-pages-bot"
+          git -C pages config user.email "oneworks-pages-bot@users.noreply.github.com"
+          git -C pages add -A
+          if git -C pages diff --cached --quiet; then
+            echo "No PWA changes to publish."
+            exit 0
+          fi
+
+          git -C pages commit -m "Deploy One Works PWA from ${SOURCE_REF}"
+          git -C pages push origin gh-pages
