@@ -1,1 +1,0 @@
-import{b8 as _}from"./index-D85e-GB7.js";const n=(...i)=>i.find(t=>typeof t=="string"&&t.trim()!==""),e=()=>n(_().__ONEWORKS_PROJECT_CLIENT_VERSION__,"0.1.0-alpha.0")??"0.0.0",s=()=>n(_().__ONEWORKS_PROJECT_CLIENT_COMMIT_HASH__,"fdb3c697c343c7f59dd7263a9b1d6f85c2183895");export{s as a,e as g};
