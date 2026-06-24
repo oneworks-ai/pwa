@@ -1,1 +1,0 @@
-import{b8 as _}from"./index-BudRdSp3.js";const e=(...n)=>n.find(t=>typeof t=="string"&&t.trim()!==""),o=()=>e(_().__ONEWORKS_PROJECT_CLIENT_VERSION__,"0.1.0-alpha.0")??"0.0.0",s=()=>e(_().__ONEWORKS_PROJECT_CLIENT_COMMIT_HASH__,"b5bb2888ca4f149cddf2de062f4ddb7e567d878b");export{s as a,o as g};
