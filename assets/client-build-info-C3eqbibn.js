@@ -1,0 +1,1 @@
+import{b8 as _}from"./index-C-aLmuBI.js";const n=(...e)=>e.find(t=>typeof t=="string"&&t.trim()!==""),o=()=>n(_().__ONEWORKS_PROJECT_CLIENT_VERSION__,"0.1.0-beta.1")??"0.0.0",a=()=>n(_().__ONEWORKS_PROJECT_CLIENT_COMMIT_HASH__,"6788a07c7f265c252930c4d6df671af73ff93dad");export{a,o as g};
