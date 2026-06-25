@@ -1,1 +1,0 @@
-import{b8 as _}from"./index-bSNba-yL.js";const e=(...a)=>a.find(t=>typeof t=="string"&&t.trim()!==""),i=()=>e(_().__ONEWORKS_PROJECT_CLIENT_VERSION__,"0.1.0-alpha.0")??"0.0.0",o=()=>e(_().__ONEWORKS_PROJECT_CLIENT_COMMIT_HASH__,"6a548ab68398e12ec11baff11ee4cea07333f860");export{o as a,i as g};

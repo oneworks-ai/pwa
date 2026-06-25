@@ -1,0 +1,1 @@
+import{b8 as _}from"./index-Evlk7BSO.js";const e=(...n)=>n.find(t=>typeof t=="string"&&t.trim()!==""),o=()=>e(_().__ONEWORKS_PROJECT_CLIENT_VERSION__,"0.1.0-beta.0")??"0.0.0",s=()=>e(_().__ONEWORKS_PROJECT_CLIENT_COMMIT_HASH__,"58ff704dc300bb08c207e357a9ff2d5740d9730a");export{s as a,o as g};
