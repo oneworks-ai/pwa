@@ -1,1 +1,0 @@
-import{b8 as _}from"./index-Coe0wbVV.js";const e=(...n)=>n.find(t=>typeof t=="string"&&t.trim()!==""),o=()=>e(_().__ONEWORKS_PROJECT_CLIENT_VERSION__,"0.1.0-beta.1")??"0.0.0",s=()=>e(_().__ONEWORKS_PROJECT_CLIENT_COMMIT_HASH__,"bb8109f2d3c13e11344fe02f4b3abc640f5e11b3");export{s as a,o as g};
