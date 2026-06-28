@@ -1,0 +1,1 @@
+import{b8 as _}from"./index-BwholBiJ.js";const n=(...e)=>e.find(t=>typeof t=="string"&&t.trim()!==""),o=()=>n(_().__ONEWORKS_PROJECT_CLIENT_VERSION__,"0.1.0-beta.1")??"0.0.0",s=()=>n(_().__ONEWORKS_PROJECT_CLIENT_COMMIT_HASH__,"2c66cc6065ba96320633010c7b97560903b8a554");export{s as a,o as g};
