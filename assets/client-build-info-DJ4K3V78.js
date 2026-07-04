@@ -1,1 +1,0 @@
-import{b8 as _}from"./index-CzcIpcnA.js";const e=(...n)=>n.find(t=>typeof t=="string"&&t.trim()!==""),o=()=>e(_().__ONEWORKS_PROJECT_CLIENT_VERSION__,"0.1.0-beta.5")??"0.0.0",a=()=>e(_().__ONEWORKS_PROJECT_CLIENT_COMMIT_HASH__,"2079a74fecd00fce4f9282b3216c289ba1a1e01b");export{a,o as g};
