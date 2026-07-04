@@ -1,1 +1,0 @@
-import{b8 as e}from"./index-CTjCQIP9.js";const _=(...n)=>n.find(t=>typeof t=="string"&&t.trim()!==""),i=()=>_(e().__ONEWORKS_PROJECT_CLIENT_VERSION__,"0.1.0-beta.4")??"0.0.0",o=()=>_(e().__ONEWORKS_PROJECT_CLIENT_COMMIT_HASH__,"0fd3f8ca1a25ed83e2b7e8c1241a7b035feab8ce");export{o as a,i as g};
