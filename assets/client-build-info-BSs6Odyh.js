@@ -1,1 +1,0 @@
-import{bt as _}from"./index-xiQLzKnh.js";const e=(...n)=>n.find(t=>typeof t=="string"&&t.trim()!==""),i=()=>e(_().__ONEWORKS_PROJECT_CLIENT_VERSION__,"0.1.0-beta.5")??"0.0.0",o=()=>e(_().__ONEWORKS_PROJECT_CLIENT_COMMIT_HASH__,"a54f2c5f2bd9b3df4503a62c59a5d468cd3e78ea");export{o as a,i as g};
