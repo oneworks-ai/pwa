@@ -1,0 +1,1 @@
+import{bt as _}from"./index-fid7Rdgy.js";const n=(...e)=>e.find(t=>typeof t=="string"&&t.trim()!==""),o=()=>n(_().__ONEWORKS_PROJECT_CLIENT_VERSION__,"0.1.0-beta.5")??"0.0.0",c=()=>n(_().__ONEWORKS_PROJECT_CLIENT_COMMIT_HASH__,"15cb145da854799c806a8548c2dc4680f03c6100");export{c as a,o as g};
