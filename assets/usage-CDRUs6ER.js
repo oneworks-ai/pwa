@@ -1,1 +1,0 @@
-import{bs as t,bt as n,am as c}from"./index-BaKbJljt.js";const o="__direct__",i=(e,a)=>(Object.entries(a).forEach(([s,r])=>{r!=null&&e.searchParams.set(s,Array.isArray(r)?r.join(","):String(r))}),e),p=(e,a={})=>{const s=a.surface==="launcher"?"/api/launcher/usage":"/api/usage",r=new URL(a.surface==="launcher"?t(s):n(s));return c(i(r,e))};export{o as U,p as g};
