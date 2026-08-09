@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="https://oneworks-ai.github.io/favicon-metal-light-transparent.svg" width="96" height="96" alt="One Works 图标">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/favicon-linear-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/favicon-linear-light.svg">
+    <img src="./assets/favicon-linear-light.svg" width="96" height="96" alt="One Works 图标">
+  </picture>
 </p>
 
 # One Works PWA
