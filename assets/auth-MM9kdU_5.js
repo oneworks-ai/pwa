@@ -1,1 +1,0 @@
-import{R as s,S as t,V as e,U as o}from"./index-CXffa1u5.js";const n=()=>s("/api/auth/status"),r=a=>t("/api/auth/login",{method:"POST",headers:o,body:JSON.stringify(a)},"[api] login failed:"),h=async()=>{const a=await t("/api/auth/logout",{method:"POST",headers:o},"[api] logout failed:");return e(),a};export{h as a,n as g,r as l};
