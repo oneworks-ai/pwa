@@ -15,6 +15,11 @@ on:
         description: Exact oneworks-ai/app commit SHA to build. Overrides source_ref.
         required: false
         type: string
+      dry_run:
+        description: Build and validate without updating the gh-pages branch.
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -51,6 +56,9 @@ jobs:
           fetch-depth: 1
           path: app
 
+      - name: Checkout Avatar SDK source
+        run: git -C app submodule update --init --depth 1 -- assets/avatar
+
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -74,12 +82,14 @@ jobs:
           __ONEWORKS_PROJECT_CLIENT_MODE__: standalone
 
       - name: Checkout pages branch
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.dry_run }}
         uses: actions/checkout@v4
         with:
           ref: gh-pages
           path: pages
 
       - name: Publish gh-pages branch
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.dry_run }}
         env:
           SOURCE_REF: ${{ steps.source.outputs.ref }}
         run: |
